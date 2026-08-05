@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://srinuravuri.github.io/ai-engineer-portfolio/sitemap.xml

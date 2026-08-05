@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Lab — Interactive Experiments | ai.engineer</title>
+  <meta name="description" content="Interactive AI experiments: resume chatbot, prompt generator, and text summarizer. Try them live." />
+  <meta property="og:title" content="AI Lab — Interactive Experiments | ai.engineer" />
+  <meta property="og:description" content="Interactive AI experiments running in the browser." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-badge">A</span>
+        <span>ai.engineer</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="ai-lab.html">AI Lab</a></li>
+          <li><a href="automation.html">Automation</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="journey.html">Journey</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta-wrap"><a class="nav-cta" href="contact.html">Let's Talk</a></div>
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="ai-lab.html">AI Lab</a>
+    <a href="automation.html">Automation</a>
+    <a href="blog.html">Blog</a>
+    <a href="journey.html">Journey</a>
+    <a href="resources.html">Resources</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <div class="page-head">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> / AI Lab</p>
+        <span class="section-label">AI Lab</span>
+        <h1>Interactive Experiments</h1>
+        <p class="lead">Try AI tools directly in the browser.</p>
+        <p class="demo-note">&#9888; Demo mode — sample responses run entirely in your browser (no API calls). A production version can be wired to a real LLM API.</p>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="segmented" id="lab-tabs" role="tablist" aria-label="AI Lab tools">
+          <button class="active" data-tool="chatbot" role="tab" aria-selected="true">Resume Chatbot</button>
+          <button data-tool="prompt" role="tab" aria-selected="false">Prompt Generator</button>
+          <button data-tool="summary" role="tab" aria-selected="false">Text Summarizer</button>
+        </div>
+
+        <!-- Chatbot -->
+        <div class="card" id="panel-chatbot" data-panel="chatbot">
+          <h3>Resume Chatbot</h3>
+          <p class="sub">Ask me anything about my experience, skills, or projects.</p>
+          <div class="chat-box" id="chat-box" aria-live="polite">
+            <div class="msg bot">Hi! Ask me anything about my experience, skills, or projects.</div>
+          </div>
+          <div class="chat-input-row">
+            <input id="chat-input" type="text" placeholder="Ask about my experience..." aria-label="Ask the chatbot" />
+            <button class="btn btn-primary" id="chat-send">Send</button>
+          </div>
+          <div class="chat-quick">
+            <button data-q="What projects have you shipped?">Projects</button>
+            <button data-q="What are your skills?">Skills</button>
+            <button data-q="Tell me about your experience">Experience</button>
+          </div>
+        </div>
+
+        <!-- Prompt generator -->
+        <div class="card" id="panel-prompt" data-panel="prompt" style="display:none">
+          <h3>Prompt Generator</h3>
+          <p class="sub">Pick a task — get a production-grade prompt template.</p>
+          <div class="segmented" style="margin-top:1rem">
+            <button data-prompt="rag" class="active">RAG Q&amp;A</button>
+            <button data-prompt="agent">Agent Task</button>
+            <button data-prompt="summarize">Summarizer</button>
+          </div>
+          <textarea class="tool-output" id="prompt-output" readonly rows="10"></textarea>
+          <button class="btn btn-ghost" id="prompt-copy" style="margin-top:1rem">Copy to clipboard</button>
+        </div>
+
+        <!-- Summarizer -->
+        <div class="card" id="panel-summary" data-panel="summary" style="display:none">
+          <h3>Text Summarizer</h3>
+          <p class="sub">Paste text — get an extractive summary (first sentences weighted by keyword score).</p>
+          <div class="form-group" style="margin-top:1rem">
+            <label for="summary-input">Source text</label>
+            <textarea id="summary-input" rows="8" placeholder="Paste a paragraph or article here..."></textarea>
+          </div>
+          <button class="btn btn-primary" id="summary-run">Summarize</button>
+          <h3 style="margin-top:1.5rem">Summary</h3>
+          <div class="tool-output" id="summary-output">Your summary will appear here.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-badge">A</span><span>ai.engineer</span></a>
+          <p class="footer-note" style="margin-top:1rem">Building AI products that solve real problems. Shipped from design to production.</p>
+          <p class="footer-note"><span class="dot" style="display:inline-block;margin-right:0.4rem"></span>Available for new projects</p>
+        </div>
+        <div>
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="ai-lab.html">AI Lab</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://github.com/Srinuravuri" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/srinuravuri" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://x.com/srinuravuri" target="_blank" rel="noopener">Twitter</a></li>
+            <li><a href="mailto:ravurisrinu989@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span data-year>2026</span> ai.engineer — Built with HTML, CSS, and love for AI.</span>
+        <span class="footer-bottom-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="sitemap.html">Sitemap</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/ai-lab.js"></script>
+</body>
+</html>
