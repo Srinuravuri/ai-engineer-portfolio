@@ -7,13 +7,21 @@ const SITE = {
   brand: "ai.engineer",
   email: "ravurisrinu989@gmail.com",
   github: "https://github.com/Srinuravuri",
-  linkedin: "https://www.linkedin.com/in/srinuravuri", // TODO: verify your handle
+  linkedin: "https://www.linkedin.com/in/srinu-ravuri-84722b290",
   twitter: "https://x.com/srinuravuri", // TODO: verify your handle
   tagline: "AI Engineer building production LLM products: RAG systems, autonomous agents, and automation workflows.",
   copyrightYear: new Date().getFullYear(),
 };
 
 const PROJECTS = [
+  {
+    title: "Data Professional Survey Dashboard",
+    metric: "630 survey responses",
+    description: "Power BI dashboard analyzing data professional salaries, job satisfaction, geography, and career insights.",
+    tags: ["Power BI", "Data Analysis", "DAX"],
+    category: "AI Products",
+    link: "https://github.com/Srinuravuri/data-professional-survey-dashboard",
+  },
   {
     title: "RAG Knowledge Base",
     metric: "98% answer accuracy",
@@ -169,17 +177,19 @@ const TIMELINE = [
 
 const RESUME = {
   name: "Srinu Ravuri",
-  title: "AI Engineer",
+  title: "Data Analyst",
   contact: "ravurisrinu989@gmail.com",
-  location: "Remote, Worldwide",
-  summary: "AI Engineer building production LLM products: RAG systems, autonomous agents, and automation workflows. I design, build, and ship AI-powered products that replace hours of manual work.",
-  skills: ["LLM APIs (OpenAI, Anthropic)", "RAG / Vector Search", "Agents & Tool Calling", "n8n Automation", "React / TypeScript", "Python", "LangChain / LangGraph", "Observability & Eval"],
+  location: "Vijayawada, AP",
+  summary: "B.Tech Information Technology graduate with hands-on data analysis experience in Python (pandas, matplotlib), Excel, and SQL, plus a background in machine learning and cloud computing (AWS, Azure). Built end-to-end retail sales analysis and Power BI dashboards. Published research on NLP-based accessibility tools. Seeking a data analytics internship to apply analytical and technical skills to real business problems.",
+  skills: ["Python (pandas, NumPy, matplotlib)", "MS Excel", "SQL", "Power BI", "EDA & Data Cleaning", "Dashboarding & Insights", "Statistical Analysis", "AWS / Azure Cloud", "Machine Learning", "Git/GitHub"],
   experience: [
-    { role: "AI Engineer", org: "Independent / Freelance", period: "2022 – Present", points: ["Shipped 20+ AI products using GPT-4, Claude, and LangChain.", "Built RAG knowledge bases with semantic search and citations.", "Automated business workflows with n8n + OpenAI webhook pipelines.", "Focused on evaluation, observability, and cost optimization in production."] }
+    { role: "Front-End Development Intern", org: "VAWE Global Technologies", period: "", points: ["Built responsive, dynamic web solutions, honing front-end development skills in a real-world product environment.", "Contributed to web application development projects for startups and academic ventures."] },
+    { role: "AI/ML Intern", org: "Eduskills (Virtual)", period: "Sep 2023 – Nov 2023", points: ["Developed and deployed machine learning models for pattern analysis and optimization.", "Collaborated with a team to refine AI algorithms, improving scalability and efficiency."] },
+    { role: "Cloud Computing Trainee", org: "AWS & Azure", period: "Jul 2023", points: ["Delivered scalable solutions using AWS compute, database, and analytics services for ML workloads.", "Supported hybrid cloud solutions integrating Azure AI, ML, and DevOps practices."] }
   ],
   projects: [
-    { name: "RAG Knowledge Base", detail: "Enterprise document Q&A with semantic search; 98% answer accuracy on internal benchmark." },
-    { name: "Autonomous Agent", detail: "Multi-step task execution with tool calling; 10x faster than manual task runs." },
-    { name: "n8n Contact Pipeline", detail: "Webhook → n8n → email automation, live on this site's contact form." }
+    { name: "Data Professional Survey Dashboard", detail: "Power BI dashboard analyzing 630 data professional survey responses: salary, job satisfaction, geography & career insights." },
+    { name: "Indian Retail Sales Analysis", detail: "End-to-end analysis of 3 years of Indian retail sales: data cleaning, EDA, KPIs, charts, dashboard & insights report (pandas + matplotlib)." },
+    { name: "AgriVoice", detail: "Multilingual voice-based AI platform for farmers — bridging literacy barriers. Presented at ICECCT Conference 2024." }
   ]
 };
